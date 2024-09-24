@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'calculator';
+  screenValue: string = '';
+
+  onButtonClick(value: string): void {
+    if (value === 'all-clear') {
+      this.screenValue = '';
+    } else if (value === '=') {
+      try {
+        this.screenValue = eval(this.screenValue);
+      } catch (error) {
+        this.screenValue = 'Error';
+      }
+    } else {
+      this.screenValue += value;
+    }
+  }
 }
